@@ -7,17 +7,18 @@ sqlite:
 mysql:
   adapter: mysql2
   database: positioning_test
-  pool: 5
+  pool: 30
   timeout: 5000
+  host: mysql://mysql:3306
   username: root
-  password:
+  password: root
 
 postgresql:
   adapter: postgresql
   database: positioning_test
-  pool: 5
-  timeout: 5000
-  host: localhost
+  pool: 30
+  timeout: 10000
+  host: postgres
   username: postgres
-  password:
+  password: postgres
   min_messages: ERROR

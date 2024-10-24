@@ -1,6 +1,6 @@
 require "active_record"
 
-ENV["DB"] = "mysql" unless ENV["DB"]
+ENV["DB"] = "postgresql" unless ENV["DB"]
 
 database_configuration = ENV["CI"] ? "test/support/ci_database.yml" : "test/support/database.yml"
 

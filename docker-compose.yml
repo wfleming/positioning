@@ -1,0 +1,28 @@
+services:
+  postgres:
+    image: docker.io/library/postgres:16-alpine
+    environment:
+      POSTGRES_PASSWORD: "postgres"
+    healthcheck:
+      test: pg_isready -U postgres
+      interval: 10s
+      timeout: 3s
+      retries: 3
+  mysql:
+    image: docker.io/library/mysql:8.0.39
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+    healthcheck:
+        test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+        timeout: 20s
+        retries: 10
+  gem:
+    image: docker.io/library/ruby:3.3.0
+    volumes:
+      - .:/var/positioning
+    working_dir: /var/positioning
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mysql:
+        condition: service_healthy

@@ -273,7 +273,13 @@ If you have any concerns or improvements please file a GitHub issue.
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+A docker compose file is provided to provide databases for testing, and a `Makefile` to easily setup
+the databases and start a shell for the gem in a ruby container.
+
+- `make setup` to start the databases & creat the empty test databases
+- `make bash` to start a bash shell in the container for the gem.
+
+Then `bin/setup` in the shell to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 This gem is tested against SQLite, PostgreSQL and MySQL. The default database for testing is MySQL. You can target other databases by prepending the environment variable `DB=sqlite` or `DB=postgresql` before `rake test`. For example: `DB=sqlite rake test`.
 
